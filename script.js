@@ -1,13 +1,10 @@
-let userScore = 0;
-let compScore = 0;
-
 const choices = document.querySelectorAll(".choice");
 
 // user Choice function
 choices.forEach((choice) => {
   choice.addEventListener("click", () => {
     const userChoice = choice.getAttribute("id");
-    playGame(userChoice);
+    playGame(userChoice); // callback
   });
 });
 
@@ -18,6 +15,16 @@ const genCompChoice = () => {
   return options[randIdx];
 };
 
+let userScore = 0;
+let compScore = 0;
+let tieScore = 0;
+
+userNumb = document.querySelector("#user-score");
+compNumb = document.querySelector("#comp-score");
+tieNumb = document.querySelector("#tie-score");
+const msg = document.querySelector("#msg");
+const msgContainer = document.querySelector(".msg-container");
+
 // who's winner function
 const playGame = (userChoice) => {
   // user choice
@@ -27,7 +34,24 @@ const playGame = (userChoice) => {
   console.log(`Computer select the ${comptChoice}`);
 
   if (userChoice === comptChoice) {
-    console.log("Its Draw");
+    tieScore++;
+    tieNumb.innerText = tieScore;
+    msg.innerText = "Its a tie 💀";
+    msgContainer.style.backgroundColor = "#020100";
+  } else if (
+    (userChoice === "rock" && comptChoice === "scissors") ||
+    (userChoice === "paper" && comptChoice === "rock") ||
+    (userChoice === "scissors" && comptChoice === "paper")
+  ) {
+    userScore++;
+    userNumb.innerText = userScore;
+    msg.innerText = `You win 🥳, ${userChoice} beats ${comptChoice}`;
+    msgContainer.style.backgroundColor = "#235789";
+  } else {
+    compScore++;
+    compNumb.innerText = compScore;
+    msg.innerText = `You loss 😔, ${comptChoice} beats ${userChoice}`;
+    msgContainer.style.backgroundColor = "#DA4167";
   }
 };
 

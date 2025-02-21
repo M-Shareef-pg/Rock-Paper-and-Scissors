@@ -12,8 +12,8 @@ body {
 
 h1 {
   font-size: 3rem;
-  height: 8rem;
-  line-height: 8rem;
+  height: 5rem;
+  line-height: 5rem;
 }
 
 .choices {
@@ -25,18 +25,20 @@ h1 {
 
 /* image siv*/
 .choice {
-  height: 200px;
-  width: 200px;
+  height: 250px;
+  width: 250px;
   background-size: cover;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 0.3s ease-in-out;
 }
 
 .choice:hover {
   background-color: #197278;
   cursor: pointer;
+  transform: scale(1.1);
 }
 
 img {
@@ -49,13 +51,14 @@ img {
 .score-board {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 3rem;
   font-size: 2rem;
   margin-top: 2rem;
 }
 
 #user-score,
-#comp-score {
+#comp-score,
+#tie-score {
   font-size: 5rem;
 }
 
@@ -70,4 +73,74 @@ img {
   display: inline-block;
   padding: 1rem;
   border-radius: 1rem;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+    height: 15rem;
+    line-height: 15rem;
+    text-align: center;
+    justify-self: center;
+  }
+
+  .choices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  /* image siv*/
+  .choice {
+    height: 100px;
+    width: 100px;
+    background-size: cover;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .choice:hover {
+    background-color: #197278;
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  img {
+    height: 130px;
+    width: 130px;
+  }
+
+  /* scoreboard */
+
+  .score-board {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: 1rem;
+    margin-top: 2rem;
+  }
+
+  #user-score,
+  #comp-score,
+  #tie-score {
+    font-size: 4rem;
+  }
+
+  /* message container */
+
+  #msg {
+  }
+  .msg-container {
+    margin-top: 2.5rem;
+    font-size: 1.2rem;
+    background-color: #c44536;
+    display: inline-block;
+    padding: 0.8rem;
+    border-radius: 1rem;
+  }
 }
